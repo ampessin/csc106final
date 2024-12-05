@@ -1,0 +1,20 @@
+var arrayMult = function (a)
+{
+    var multOfInputs = 0;
+    for (var i = 0; i < a.length; i++)
+    {
+        multOfInputs = multOfInputs * a[i];
+    }
+    return multOfInputs;
+};
+
+
+var arrayDiv = function (a)
+{
+    var divOfInputs = 0;
+    for (var i = 0; i < a.length; i++)
+    {
+        divOfInputs = divOfInputs / a[i];
+    }
+    return divOfInputs;
+};

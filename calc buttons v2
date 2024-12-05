@@ -1,0 +1,278 @@
+var Button = function(config) //button contructor
+{
+    this.x = config.x || 0;
+    this.y = config.y || 0;
+    this.width = config.width || 50;
+    this.height = config.height || 50;
+    this.butText = config.butText;
+    this.color = config.color || color(255, 255, 255);
+    this.onClick = config.onClick || function() {};
+};
+Button.prototype.draw = function() //button draw function
+{
+    rectMode(LEFT);
+    fill(this.color);
+    rect(this.x, this.y, this.width, this.height, 5);
+    fill(0, 0, 0);
+    textSize(20);
+    textAlign(CENTER, TOP);
+    text(this.butText, this.x+26, this.y+(this.height/2)-10);
+};
+Button.prototype.isMouseInside = function() //determines if the mouse is over a button
+{
+    return mouseX > this.x &&
+           mouseX < (this.x + this.width) &&
+           mouseY > this.y &&
+           mouseY < (this.y + this.height);
+};
+Button.prototype.handleMouseClick = function() 
+/* checks isMouseInside if yes, runs the onClick function */
+{
+    if (this.isMouseInside()) 
+    {
+        this.onClick();
+    }
+};
+
+var a = 0;// numbers shown on the screen
+var b = 0;// num 2 in calculation
+var z = 0; // defines what happens to the num (+,-,/,*) 'OPERATION'
+/*
+   1 = add, 2 = subtract, 3 = times, 4 = divide, 5 = equal, 6 = clear
+*/
+var butSymbols = ["1","2","3","+","4","5","6","-","7","8","9","×","Clear", "0" ,"=","÷" ];
+var butValues = [1,2,3,"+",4,5,6,"-", 7,8,9,"*","Clear", 0 ,"=","÷" ];/*keep symbols so it lines up with the other array*/
+var calcButtons = [];
+for (var i = 0; i <= 3; i++)
+{
+    for (var j = 0; j <= 3; j++)
+    {
+        var calculatorButtons = new Button
+        ({
+            x: 56+73 * i,
+            y: 108+72 * j,
+            width: 70,
+            height: 70,
+            color: color(144, 255, 110),
+            butText: butSymbols[i+j*4],
+        });
+        calcButtons.push(new Button(calculatorButtons));
+    }
+}
+var arrayAdd = function(a)//will be used to add up chosen numbers, as the symbols arent numbers techniqually terrible spelling there whatever 
+{
+    var sumOfInputs = 0;
+    for (var i = 0; i< a.length; i++)
+    {
+        sumOfInputs = sumOfInputs + a[i];
+    }
+    return sumOfInputs;
+};
+mouseClicked = function()
+{
+    for (var i = 0; i < calcButtons.length; i++)
+    {
+        calcButtons[i].handleMouseClick();
+    }
+};
+var numInput = [];
+
+calcButtons[0].onClick = function() // "1" button
+{
+    if (z === 0) // if a operator has not been pressed
+    {
+        if (a === 0)
+        {
+            a = calcButtons[0].butText;
+            numInput.push(butValues[0]);
+        } 
+        else if (a !== 0)
+        {
+            a = a + calcButtons[0].butText;
+            numInput.push(butValues[0]);
+        }
+    }
+};
+calcButtons[1].onClick = function() // "4" button
+{
+    if (z === 0) // if a operator has not been pressed
+    {
+        if (a === 0)
+        {
+            a = calcButtons[1].butText;
+            numInput.push(butValues[1]);
+        } 
+        else if (a !== 0)
+        {
+            a = a + calcButtons[1].butText;
+            numInput.push(butValues[1]);
+        }
+    }
+};
+calcButtons[2].onClick = function() // "7" button
+{
+    if (z === 0) // if a operator has not been pressed
+    {
+        if (a === 0)
+        {
+            a = calcButtons[2].butText;
+            numInput.push(butValues[2]);
+        } 
+        else if (a !== 0)
+        {
+            a = a + calcButtons[2].butText;
+            numInput.push(butValues[2]);
+        }
+    }
+};
+calcButtons[3].onClick = function() // "Clear" button
+{
+
+};
+calcButtons[4].onClick = function() // "2" button
+{
+    if (z === 0) // if a operator has not been pressed
+    {
+        if (a === 0)
+        {
+            a = calcButtons[4].butText;
+            numInput.push(butValues[4]);
+        } 
+        else if (a !== 0)
+        {
+            a = a + calcButtons[4].butText;
+            numInput.push(butValues[4]);
+        }
+    }
+};
+calcButtons[5].onClick = function() // "5" button
+{
+    if (z === 0) // if a operator has not been pressed
+    {
+        if (a === 0)
+        {
+            a = calcButtons[5].butText;
+            numInput.push(butValues[5]);
+        } 
+        else if (a !== 0)
+        {
+            a = a + calcButtons[5].butText;
+            numInput.push(butValues[5]);
+        }
+    }
+};
+calcButtons[6].onClick = function() // "8" button
+{
+    if (z === 0) // if a operator has not been pressed
+    {
+        if (a === 0)
+        {
+            a = calcButtons[6].butText;
+            numInput.push(butValues[6]);
+        } 
+        else if (a !== 0)
+        {
+            a = a + calcButtons[6].butText;
+            numInput.push(butValues[6]);
+        }
+    }
+};
+calcButtons[7].onClick = function() // "0" button
+{
+    if (z === 0) // if a operator has not been pressed
+    {
+        if (a === 0)
+        {
+            a = calcButtons[7].butText;
+            numInput.push(butValues[7]);
+        } 
+        else if (a !== 0)
+        {
+            a = a + calcButtons[7].butText;
+            numInput.push(butValues[7]);
+        }
+    }
+};
+calcButtons[8].onClick = function() // "3" button
+{
+    if (z === 0) // if a operator has not been pressed
+    {
+        if (a === 0)
+        {
+            a = calcButtons[8].butText;
+            numInput.push(butValues[8]);
+        } 
+        else if (a !== 0)
+        {
+            a = a + calcButtons[8].butText;
+            numInput.push(butValues[8]);
+        }
+    }
+};
+calcButtons[9].onClick = function() // "6" button
+{
+    if (z === 0) // if a operator has not been pressed
+    {
+        if (a === 0)
+        {
+            a = calcButtons[9].butText;
+            numInput.push(butValues[9]);
+        } 
+        else if (a !== 0)
+        {
+            a = a + calcButtons[9].butText;
+            numInput.push(butValues[9]);
+        }
+    }
+};
+calcButtons[10].onClick = function() // "9" button
+{
+    if (z === 0) // if a operator has not been pressed
+    {
+        if (a === 0)
+        {
+            a = calcButtons[10].butText;
+            numInput.push(butValues[10]);
+        } 
+        else if (a !== 0)
+        {
+            a = a + calcButtons[10].butText;
+            numInput.push(butValues[10]);
+        }
+    }
+};
+calcButtons[11].onClick = function() // "=" button
+{
+    //come back to this later
+};
+calcButtons[12].onClick = function() // "+" button
+{
+    //come back to this later
+    //put all input numbers into one number
+};
+calcButtons[13].onClick = function() // "-" button
+{
+    //come back to this later
+};
+calcButtons[14].onClick = function() // "X" button
+{
+    //come back to this later
+};
+calcButtons[15].onClick = function() // "Divide" button
+{
+    //come back to this later
+};
+draw = function() 
+{
+    for (var i = 0; i < calcButtons.length; i++)
+    {
+        calcButtons[i].draw();
+    }
+    fill(161, 155, 155);
+    rect(60,10,260,76);
+    textSize(20);
+    fill(255, 255, 255);
+    textAlign(RIGHT,CENTER);
+    text(a, 314,47);
+    
+};

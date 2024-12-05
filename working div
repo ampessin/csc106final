@@ -1,0 +1,54 @@
+var arrayDiv = function(a)
+{
+    var quotient = 0;
+    for (var i = 0; i < a.length; i++)
+    {
+        if (i === 0)
+        {
+            quotient = a[i];
+        }
+        else 
+        {
+            quotient = quotient /= a[i];
+        }
+    }
+    return quotient;
+};
+else if (z === 4)
+    {
+        valuesOfInput.push(arrayCombineIntoNum(numInput));
+        a = 0;
+        b = 0;
+        z = 0;
+        numInput = [];
+        answer = arrayDiv(valuesOfInput);
+        pastAnswer = answer;
+        valuesOfInput = [];
+    }
+    
+    
+    if (z === 0 && pastAnswer !== 0)
+    {
+        valuesOfInput.push(pastAnswer);
+        numInput = [];
+        a = 0;
+        z = 4;
+        answer = null;
+    }
+    else if (z === 0)
+    {
+        valuesOfInput.push(arrayCombineIntoNum(numInput));
+        //println(valuesOfInput[0]);
+        numInput = [];
+        a = 0;
+        z = 4;
+        answer = null;
+    }
+    else if (z === 4)
+    {
+        valuesOfInput.push(arrayCombineIntoNum(numInput));
+        numInput = [];
+        b = 0;
+        a = 0;
+        answer = null;
+    }

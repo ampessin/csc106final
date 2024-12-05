@@ -1,0 +1,378 @@
+var head= function(bitX,bitY,bitHeight){
+noStroke(); 
+fill(255,224,189); //skin color
+ellipse(bitX,bitY-(bitHeight/100*125),(bitHeight/100*87),(bitHeight/100*105)); //head
+fill(255, 255, 255);//white
+
+};
+var neck = function(bitX,bitY,bitHeight){
+//bottom of neck
+fill(230, 202, 172); //skin color
+ellipse(bitX-(bitHeight/100*2),bitY-(bitHeight/100*44),(bitHeight/100*78),(bitHeight/100*71));//behind bottom of neck
+
+
+//neck
+stroke(230, 202, 172);
+strokeWeight(4);
+line(bitX-(bitHeight/100*30),bitY-(bitHeight/100*51),bitX-(bitHeight/100*30),bitY-(bitHeight/100*92));//left side of neck
+line(bitX+(bitHeight/100*27),bitY-(bitHeight/100*51),bitX+(bitHeight/100*30),bitY-(bitHeight/100*92));//right side of neck
+stroke(0, 0, 0);//sets stroke to black for the neck definition
+strokeWeight(0.5);
+fill(230,202,172);
+arc(bitX-(bitHeight/100*28),bitY-(bitHeight/100*49),(bitHeight/100*37),(bitHeight/100*60),269,360);//left side definition
+arc(bitX+(bitHeight/100*26),bitY-(bitHeight/100*49),(bitHeight/100*37),(bitHeight/100*60),180,276);//right side definition
+noStroke();
+fill(207, 182, 155);
+rect(bitX-(bitHeight/100*9),bitY-(bitHeight/100*59),(bitHeight/100*16),(bitHeight/100*10));//fills in bottom part between right and left side definitions
+quad(bitX-(bitHeight/100*9),bitY-(bitHeight/100*55),bitX-(bitHeight/100*14),bitY-(bitHeight/100*69),bitX+(bitHeight/100*11),bitY-(bitHeight/100*71),bitX+(bitHeight/100*8),bitY-(bitHeight/100*57));//fills adams apple area
+
+//bottom of neck
+fill(230, 202, 172); //skin color
+ellipse(bitX-(bitHeight/100*2),bitY-(bitHeight/100*28),(bitHeight/100*73),(bitHeight/100*49));// bottom of neck for blending
+};
+var chin = function(bitX,bitY,bitHeight){
+strokeWeight(1);
+//chin
+noStroke();
+fill(255,224,189);
+
+arc(bitX-(bitHeight/100*8),bitY-(bitHeight/100*98),(bitHeight/100*89),(bitHeight/100*67),-5,61);//right chin arc
+arc(bitX-(bitHeight/100*7),bitY-(bitHeight/100*98),(bitHeight/100*59),(bitHeight/100*60),101,180);//left chin arc
+stroke(255, 224, 189);// skincolor
+line(bitX-(bitHeight/100*11),bitY-(bitHeight/100*69),bitX+(bitHeight/100*20),bitY-(bitHeight/100*72));//chin line to connect chin halfs
+rect(bitX-(bitHeight/100*12),bitY-(bitHeight/100*96),(bitHeight/100*25),(bitHeight/100*26));//to fill in face
+stroke(0, 0, 0);
+line(bitX-(bitHeight/100*9),bitY-(bitHeight/100*81),bitX,bitY-(bitHeight/100*78));//leftchinline
+line(bitX+(bitHeight/100*7),bitY-(bitHeight/100*81),bitX,bitY-(bitHeight/100*78));
+};
+var ears = function(bitX,bitY,bitHeight){
+//left ear
+noStroke();
+fill(255,224,189);
+ellipse(bitX-(bitHeight/100*43),bitY-(bitHeight/100*119),(bitHeight/100*17),(bitHeight/100*32)); //ear
+stroke(0,0,0);
+arc(bitX-(bitHeight/100*41),bitY-(bitHeight/100*119),(bitHeight/100*11),(bitHeight/100*14),77,296); //left inner ear
+
+//right ear
+noStroke();
+fill(255,224,189);
+ellipse(bitX+(bitHeight/100*43),bitY-(bitHeight/100*119),(bitHeight/100*17),(bitHeight/100*32));//ear
+stroke(0,0,0);
+arc(bitX+(bitHeight/100*43),bitY-(bitHeight/100*119),(bitHeight/100*11),(bitHeight/100*14),257,462);//right inner ear
+};
+var face = function(bitX,bitY,bitHeight){
+//eyes
+stroke(0, 0, 0);
+fill(255, 255, 255); //right eye white
+ellipse(bitX+(bitHeight/100*15),bitY-(bitHeight/100*136),(bitHeight/100*19),(bitHeight/100*11));// right eye
+fill (130, 192, 237); //eye color
+ellipse(bitX+(bitHeight/100*15),bitY-(bitHeight/100*136),(bitHeight/100*8),(bitHeight/100*9)); //eye color part of eye
+fill(0, 0, 0); //black pupil 
+ellipse(bitX+(bitHeight/100*15),bitY-(bitHeight/100*136),(bitHeight/100*2),(bitHeight/100*2)); //pupil
+
+
+noFill(); 
+fill(255, 255, 255); //left eye white
+ellipse(bitX-(bitHeight/100*16),bitY-(bitHeight/100*136),(bitHeight/100*19),(bitHeight/100*11)); // left eye
+fill (130, 192, 237); //eye color
+ellipse(bitX-(bitHeight/100*16),bitY-(bitHeight/100*136),(bitHeight/100*8),(bitHeight/100*9)); //eye color part of eye
+fill(0, 0, 0); //black pupil 
+ellipse(bitX-(bitHeight/100*16),bitY-(bitHeight/100*136),(bitHeight/100*2),(bitHeight/100*2)); //pupil
+
+
+
+//eyebrow left
+noFill();
+strokeWeight(4);
+stroke(125, 93, 73);
+arc(bitX-(bitHeight/100*17),bitY-(bitHeight/100*142),(bitHeight/100*19),(bitHeight/100*14),190,310);//left eyebrow
+
+//eyebrow right
+
+arc(bitX+(bitHeight/100*17),bitY-(bitHeight/100*142),(bitHeight/100*19),(bitHeight/100*14),223,343); //right eyebrow
+
+//nose
+noFill();
+strokeWeight(1);
+arc(bitX+(bitHeight/100*11),bitY-(bitHeight/100*131),(bitHeight/100*16),(bitHeight/100*42),90,180);//right side of nose
+arc(bitX-(bitHeight/100*11),bitY-(bitHeight/100*131),(bitHeight/100*16),(bitHeight/100*42),0,90);//left side of nose
+arc(bitX,bitY-(bitHeight/100*90),(bitHeight/100*67),(bitHeight/100*41),253,291); //bottom of nose
+//nostrils
+fill(0, 0, 0);
+arc(bitX-(bitHeight/100*4),bitY-(bitHeight/100*109),(bitHeight/100*4),(bitHeight/100*9),196,350);//right nostril
+arc(bitX+(bitHeight/100*4),bitY-(bitHeight/100*109),(bitHeight/100*4),(bitHeight/100*9),196,350);//left nostril
+noFill();
+
+//mouth
+fill(235, 181, 184);
+arc(bitX-(bitHeight/100*3),bitY-(bitHeight/100*98),(bitHeight/100*23), (bitHeight/100*6), 180,260);//upper left first curve
+arc(bitX-(bitHeight/100*5),bitY-(bitHeight/100*99),(bitHeight/100*10),(bitHeight/100*4),270,360);//upper left second curve
+arc(bitX+(bitHeight/100*3),bitY-(bitHeight/100*98),(bitHeight/100*16),(bitHeight/100*6),221,360);//upper right lip
+
+arc(bitX-(bitHeight/100*6), bitY-(bitHeight/100*99),(bitHeight/100*17),(bitHeight/100*8),45,180);//bottom left lip
+arc(bitX+(bitHeight/100*3), bitY-(bitHeight/100*99),(bitHeight/100*17),(bitHeight/100*8),0,135);//bottom right lip
+stroke(176, 135, 138);
+strokeWeight(0.8);
+line(bitX-(bitHeight/100*11),bitY-(bitHeight/100*98),bitX+(bitHeight/100*7),bitY-(bitHeight/100*98));//mouth line
+
+}; //facial features
+var hair = function(bitX,bitY,bitHeight){
+
+//hair
+noStroke();
+fill(144,84,47);
+triangle(bitX-(bitHeight/100*38),bitY-(bitHeight/100*171),bitX-(bitHeight/100*38),bitY-(bitHeight/100*126),bitX-(bitHeight/100*22),bitY-(bitHeight/100*170));//left hair
+triangle(bitX+(bitHeight/100*39),bitY-(bitHeight/100*171),bitX+(bitHeight/100*40),bitY-(bitHeight/100*126),bitX+(bitHeight/100*25),bitY-(bitHeight/100*170));//right hair
+};
+var hat = function(bitX,bitY,bitHeight){
+noFill();
+//RHODY HAT
+stroke(181, 179, 179);
+strokeWeight(6);
+arc(bitX,bitY-(bitHeight/100*149),(bitHeight/100*207),(bitHeight/100*47),248, 294);//closest part of brim
+arc(bitX-(bitHeight/100*30),bitY-(bitHeight/100*172),(bitHeight/100*20),(bitHeight/100*20),180,215);//left brim curve
+line(bitX-(bitHeight/100*31),bitY-(bitHeight/100*194),bitX-(bitHeight/100*38),bitY-(bitHeight/100*179));//left side of brim
+line(bitX+(bitHeight/100*30),bitY-(bitHeight/100*194),bitX+(bitHeight/100*42),bitY-(bitHeight/100*172));//right side of brim
+arc(bitX,bitY-(bitHeight/100*175),(bitHeight/100*95),(bitHeight/100*50),234,305);//where the brim and the top meet
+fill(181, 179, 179);
+strokeWeight(0.5);
+quad(bitX-(bitHeight/100*31),bitY-(bitHeight/100*196),bitX+(bitHeight/100*27),bitY-(bitHeight/100*198),bitX+(bitHeight/100*40),bitY-(bitHeight/100*173),bitX-(bitHeight/100*38),bitY-(bitHeight/100*171));//fill in brim
+strokeWeight(3);
+line(bitX-(bitHeight/100*31),bitY-(bitHeight/100*196),bitX-(bitHeight/100*26),bitY-(bitHeight/100*215));//top of hat structure left
+line(bitX+(bitHeight/100*31),bitY-(bitHeight/100*196),bitX+(bitHeight/100*26),bitY-(bitHeight/100*214));//top of hat structure right
+fill(133, 133, 133);
+quad(bitX-(bitHeight/100*26),bitY-(bitHeight/100*218),bitX+(bitHeight/100*24),bitY-(bitHeight/100*218),bitX+(bitHeight/100*30),bitY-(bitHeight/100*196),bitX-(bitHeight/100*30),bitY-(bitHeight/100*196));//fill top of hat
+noFill();
+arc(bitX,bitY-(bitHeight/100*196),(bitHeight/100*95),(bitHeight/100*50),238,303);//top top of hat
+};
+var rhodySymbol = function(bitX,bitY,bitHeight){
+//rhody symbol
+fill(0, 0, 200);
+textSize((bitHeight/100*24));
+text("R", bitX-(bitHeight/100*6),bitY-(bitHeight/100*199));//rhody "R" on hat
+textSize((bitHeight/100*19));
+var f = createFont("monospace");//sets the "I" to monospace font for the rhody symbol
+textFont(f);
+text("I", bitX-(bitHeight/100*3.2),bitY-(bitHeight/100*201));
+
+};
+var shirt = function(bitX,bitY,bitHeight){
+    
+    //shirt
+    strokeWeight(2);
+    stroke(59, 56, 56);
+    noFill();
+    arc(bitX-(bitHeight/100*1),bitY-(bitHeight/100*65),(bitHeight/100*75),(bitHeight/100*65),18,167);//neck line
+    fill(59,56,56);
+    rect(bitX-(bitHeight/100*34),bitY-(bitHeight/100*31),(bitHeight/100*64),(bitHeight/100*74));//body square
+    quad(bitX-(bitHeight/100*38),bitY-(bitHeight/100*57), bitX-(bitHeight/100*85),bitY-(bitHeight/100*12),bitX-(bitHeight/100*30),bitY-(bitHeight/100*10),bitX-(bitHeight/100*19),bitY-(bitHeight/100*26));//left shoulder
+    quad(bitX+(bitHeight/100*36),bitY-(bitHeight/100*53), bitX+(bitHeight/100*71),bitY-(bitHeight/100*11),bitX+(bitHeight/100*30),bitY-(bitHeight/100*11),bitX+(bitHeight/100*18),bitY-(bitHeight/100*30));//right shoulder
+    quad(bitX-(bitHeight/100*29),bitY-(bitHeight/100*36), bitX+(bitHeight/100*33),bitY-(bitHeight/100*15),bitX+(bitHeight/100*23),bitY-(bitHeight/100*38),bitX-(bitHeight/100*2),bitY-(bitHeight/100*30));//*fills in area under neckline *//
+};
+var arms = function (bitX,bitY,bitHeight){
+    //arms
+    fill(230, 202, 172);
+    noStroke();
+    rect(bitX-(bitHeight/100*76),bitY-(bitHeight/100*10),(bitHeight/100*30),(bitHeight/100*45));//Left arm
+    rect(bitX+(bitHeight/100*36),bitY-(bitHeight/100*10),(bitHeight/100*30),(bitHeight/100*45));//Right arm
+    //fingers
+    rect(bitX+(bitHeight/100*36),bitY+(bitHeight/100*5),(bitHeight/100*8),(bitHeight/100*40));//right arm finger #1 (from left to right)
+    rect(bitX+(bitHeight/100*46),bitY+(bitHeight/100*5),(bitHeight/100*8),(bitHeight/100*40));//right arm finger #2
+    rect(bitX+(bitHeight/100*56),bitY+(bitHeight/100*5),(bitHeight/100*8),(bitHeight/100*40));//right arm finger #3
+    
+    rect(bitX-(bitHeight/100*54),bitY+(bitHeight/100*5),(bitHeight/100*8),(bitHeight/100*40));//left arm finger #1 (from right to left)
+    rect(bitX-(bitHeight/100*64),bitY+(bitHeight/100*5),(bitHeight/100*8),(bitHeight/100*40));//left arm finger #2
+    rect(bitX-(bitHeight/100*74),bitY+(bitHeight/100*5),(bitHeight/100*8),(bitHeight/100*40));//left arm finger #3
+};
+var initials = function (bitX,bitY,bitHeight){
+    stroke(255, 0, 0);
+    strokeWeight(2);
+    fill(255, 255, 255);
+    textSize((bitHeight/100*23));
+    text("AP",bitX-(bitHeight/100*14),bitY-(bitHeight/100*17),(bitHeight/100*30),(bitHeight/100*24));//initials on shirt
+};
+var bitMoji= function(bitX,bitY,bitHeight){
+    head (bitX,bitY,bitHeight);
+    neck(bitX,bitY,bitHeight);
+    chin(bitX,bitY,bitHeight);
+    ears(bitX,bitY,bitHeight);
+    face(bitX,bitY,bitHeight);
+    hair(bitX,bitY,bitHeight);
+    hat(bitX,bitY,bitHeight);
+    rhodySymbol(bitX,bitY,bitHeight);
+    shirt(bitX,bitY,bitHeight);
+    arms(bitX,bitY,bitHeight);
+    initials(bitX,bitY,bitHeight);
+};
+var drawHat = function (x, y, h){
+    fill(252, 252, 252);
+    rect(x+(h/100 *37),y+(h/100 *34),(h/100 *50),(h/100 *24)); //hat
+    line(x+(h/100 *74),y+(h/100 *58),x+(h/100 *4),y+(h/100 *58)); //tip of hat
+};
+var drawBody = function (a, b, h){
+    fill(0, 221, 255);
+    rect(a+(h/100 *39),b+(h/100 *115),(h/100 *50),(h/100 *50)); //body
+    rect(a+(h/100 *17),b+(h/100 *115),(h/100 *20),(h/100 *60)); //left arm
+    rect(a+(h/100 *91),b+(h/100 *115),(h/100 *20),(h/100 *60)); //right arm
+    textSize((h/100 *21));
+    fill(0, 255, 13);
+    text("YP",a+(h/94 *50),b+(h/116 *146)); //Initials on shirt
+};
+var drawHead = function (c, d, h){
+    fill(252, 255, 199);
+    ellipse(c+(h/100 *35),d+(h/100 *88),(h/100 *10),(h/100 *10)); //left ear
+    ellipse(c+(h/100 *91),d+(h/100 *88),(h/100 *10),(h/100 *10)); //right ear
+    fill(252, 255, 199);
+    ellipse(c+(h/100 *63),d+(h/100 *86),(h/100 *55),(h/100 *58)); //head
+    fill(133, 53, 53);
+    ellipse(c+(h/100 *54),d+(h/100 *79),(h/100 *6),(h/100 *6)); //left eye
+    fill(133, 53, 53);
+    ellipse(c+(h/100 *73),d+(h/100 *79),(h/100 *6),(h/100 *6)); //right eye
+    fill(255, 255, 255);
+    ellipse(c+(h/100 *63),d+(h/100 *100),(h/100 *24),(h/100 *0)); //mouth
+    fill(212, 189, 189);
+    arc(c+(h/100 *66),d+(h/100 *91),(h/100 *7),(h/100 *6),57,286); //nose
+    fill(0, 0, 0);
+    arc(c+(h/100 *63),d+(h/100 *67),(h/100 *52),(h/100 *-24),-27,207); //hair
+};
+var drawBitmoji = function (bitmojiX, bitmojiY, h){
+    drawHead (bitmojiX, bitmojiY, h);
+    drawHat (bitmojiX, bitmojiY, h);
+    drawBody (bitmojiX, bitmojiY, h);
+};
+var sceneNum = 1;
+var Button = function(config) //button contructor
+{
+    this.x = config.x || 0;
+    this.y = config.y || 0;
+    this.width = config.width || 50;
+    this.height = config.height || 50;
+    this.butText = config.butText || "Click";
+    this.color = config.color || color(255, 255, 255);
+    this.onClick = config.onClick || function() {};
+};
+Button.prototype.draw = function() //button draw function
+{
+    rectMode(LEFT);
+    fill(this.color);
+    rect(this.x, this.y, this.width, this.height, 5);
+    fill(0, 0, 0);
+    textSize(14);
+    textAlign(LEFT, TOP);
+    text(this.butText, this.x+31, this.y+(this.height/2)-10);
+};
+Button.prototype.isMouseInside = function() //determines if the mouse is over a button
+{
+    return mouseX > this.x &&
+           mouseX < (this.x + this.width) &&
+           mouseY > this.y &&
+           mouseY < (this.y + this.height);
+};
+Button.prototype.handleMouseClick = function() 
+/* checks isMouseInside if yes, runs the onClick function */
+{
+    if (this.isMouseInside()) 
+    {
+        this.onClick();
+    }
+};
+
+var btnStart = new Button
+({
+    x: 132,
+    y: 320,
+    width: 118,
+    height: 50,
+    color: color(232, 217, 14),
+    butText: "Start",
+    onClick: function()
+    {
+        sceneNum = 2;
+    }
+});
+var startScene = function()
+{
+background(38, 209, 212);
+fill(136, 112, 138);
+textSize(50);
+text("+",50,50);
+text("-",130,50);
+text("x",212,50);
+text("/",305,50);
+rect(144,167,94,27);
+fill(255, 255, 255);
+rect(144,196,94,102);
+fill(181, 155, 155);
+rect(148,201,18,18);
+rect(170,225,18,18);
+rect(193,225,18,18);
+rect(216,225,18,18);
+rect(148,225,18,18);
+rect(170,201,18,18);
+rect(193,250,18,18);
+rect(216,250,18,18);
+rect(148,250,18,18);
+rect(170,250,18,18);
+rect(193,201,18,18);
+rect(216,274,18,18);
+rect(148,274,18,18);
+rect(170,275,18,18);
+rect(193,275,18,18);
+rect(216,202,18,18);
+textSize(15);
+fill(255, 0, 0);
+text("+",223,202);
+text("-",220,225);
+text("x",221,251);
+text("/",221,275);
+text("1",151,201);
+text("2",174,201);
+text("3",197,201);
+text("4",151,225);
+text("5",173,225);
+text("6",196,225);
+text("7",153,251);
+text("8",174,250);
+text("9",196,251);
+text("0",177,276);
+text("C",155,276);
+text("=",198,275);
+    fill(171, 158, 158);
+    textSize(20);
+    text("Welcome To Our Calculator App", 43,100);
+    btnStart.draw();
+    drawBitmoji(264,121,102);
+    bitMoji(66,265,50);
+
+};
+
+//calc code here
+
+
+
+var calcScene = function()
+{
+    background(138, 131, 131);
+    
+};
+
+mouseClicked = function()
+{
+    if (sceneNum === 1)
+    {
+        btnStart.handleMouseClick();
+        println(sceneNum);
+    }
+};
+
+draw = function() 
+{
+    if (sceneNum === 1)
+    {
+        startScene();
+    }
+    else if (sceneNum === 2)
+    {
+        calcScene();
+    }
+};

@@ -1,0 +1,89 @@
+var sceneNum = 1;
+var Button = function(config) //button contructor
+{
+    this.x = config.x || 0;
+    this.y = config.y || 0;
+    this.width = config.width || 50;
+    this.height = config.height || 50;
+    this.butText = config.butText || "Click";
+    this.color = config.color || color(255, 255, 255);
+    this.onClick = config.onClick || function() {};
+};
+Button.prototype.draw = function() //button draw function
+{
+    rectMode(LEFT);
+    fill(this.color);
+    rect(this.x, this.y, this.width, this.height, 5);
+    fill(0, 0, 0);
+    textSize(14);
+    textAlign(LEFT, TOP);
+    text(this.butText, this.x+31, this.y+(this.height/2)-10);
+};
+Button.prototype.isMouseInside = function() //determines if the mouse is over a button
+{
+    return mouseX > this.x &&
+           mouseX < (this.x + this.width) &&
+           mouseY > this.y &&
+           mouseY < (this.y + this.height);
+};
+Button.prototype.handleMouseClick = function() 
+/* checks isMouseInside if yes, runs the onClick function */
+{
+    if (this.isMouseInside()) 
+    {
+        this.onClick();
+    }
+};
+
+var btnStart = new Button
+({
+    x: 147,
+    y: 258,
+    width: 118,
+    height: 50,
+    color: color(232, 217, 14),
+    butText: "Start",
+    onClick: function()
+    {
+        sceneNum = 2;
+    }
+});
+var startScene = function()
+{
+    background(27, 16, 107);
+    fill(255, 0, 0);
+    textSize(20);
+    text("Welcome To Our Calculator App", 62,100);
+    btnStart.draw();
+};
+
+//calc code here
+
+
+
+var calcScene = function()
+{
+    background(138, 131, 131);
+    
+};
+
+mouseClicked = function()
+{
+    if (sceneNum === 1)
+    {
+        btnStart.handleMouseClick();
+        println(sceneNum);
+    }
+};
+
+draw = function() 
+{
+    if (sceneNum === 1)
+    {
+        startScene();
+    }
+    else if (sceneNum === 2)
+    {
+        calcScene();
+    }
+};

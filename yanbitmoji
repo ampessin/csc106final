@@ -1,0 +1,45 @@
+var drawHat = function (x, y, h){
+    fill(252, 252, 252);
+    rect(x+(h/100 *37),y+(h/100 *34),(h/100 *50),(h/100 *24)); //hat
+    line(x+(h/100 *74),y+(h/100 *58),x+(h/100 *4),y+(h/100 *58)); //tip of hat
+};
+
+var drawBody = function (a, b, h){
+    fill(0, 221, 255);
+    rect(a+(h/100 *39),b+(h/100 *115),(h/100 *50),(h/100 *50)); //body
+    rect(a+(h/100 *17),b+(h/100 *115),(h/100 *20),(h/100 *60)); //left arm
+    rect(a+(h/100 *91),b+(h/100 *115),(h/100 *20),(h/100 *60)); //right arm
+    textSize((h/100 *21));
+    fill(0, 255, 13);
+    text("YP",a+(h/100 *50),b+(h/100 *146)); //Initials on shirt
+};
+
+var drawHead = function (c, d, h){
+    fill(252, 255, 199);
+    ellipse(c+(h/100 *35),d+(h/100 *88),(h/100 *10),(h/100 *10)); //left ear
+    ellipse(c+(h/100 *91),d+(h/100 *88),(h/100 *10),(h/100 *10)); //right ear
+    fill(252, 255, 199);
+    ellipse(c+(h/100 *63),d+(h/100 *86),(h/100 *55),(h/100 *58)); //head
+    fill(133, 53, 53);
+    ellipse(c+(h/100 *54),d+(h/100 *79),(h/100 *6),(h/100 *6)); //left eye
+    fill(133, 53, 53);
+    ellipse(c+(h/100 *73),d+(h/100 *79),(h/100 *6),(h/100 *6)); //right eye
+    fill(255, 255, 255);
+    ellipse(c+(h/100 *63),d+(h/100 *100),(h/100 *24),(h/100 *0)); //mouth
+    fill(212, 189, 189);
+    arc(c+(h/100 *66),d+(h/100 *91),(h/100 *7),(h/100 *6),57,286); //nose
+    fill(0, 0, 0);
+    arc(c+(h/100 *63),d+(h/100 *67),(h/100 *52),(h/100 *-24),-27,207); //hair
+};
+var drawBitmoji = function (bitmojiX, bitmojiY, h){
+    drawHead (bitmojiX, bitmojiY, h);
+    drawHat (bitmojiX, bitmojiY, h);
+    drawBody (bitmojiX, bitmojiY, h);
+};
+
+background(255, 255, 255);
+mouseClicked = function () {
+    drawBody (mouseX, mouseY, 40);
+    drawHead (mouseX, mouseY, 40);
+    drawHat (mouseX, mouseY, 40);
+};

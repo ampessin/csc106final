@@ -1,0 +1,266 @@
+var Button = function(config) //button contructor
+{
+    this.x = config.x || 0;
+    this.y = config.y || 0;
+    this.width = config.width || 50;
+    this.height = config.height || 50;
+    this.butText = config.butText;
+    this.color = config.color || color(255, 255, 255);
+    this.onClick = config.onClick || function() {};
+};
+Button.prototype.draw = function() //button draw function
+{
+    rectMode(LEFT);
+    fill(this.color);
+    rect(this.x, this.y, this.width, this.height, 5);
+    fill(0, 0, 0);
+    textSize(20);
+    textAlign(CENTER, TOP);
+    text(this.butText, this.x+36, this.y+(this.height/2)-10);
+};
+Button.prototype.isMouseInside = function() //determines if the mouse is over a button
+{
+    return mouseX > this.x &&
+           mouseX < (this.x + this.width) &&
+           mouseY > this.y &&
+           mouseY < (this.y + this.height);
+};
+Button.prototype.handleMouseClick = function() 
+/* checks isMouseInside if yes, runs the onClick function */
+{
+    if (this.isMouseInside()) 
+    {
+        this.onClick();
+    }
+};
+
+var a = 0;// numbers shown on the screen
+var b = 0;// num 2 in calculation
+var z = 0; // defines what happens to the num (+,-,/,*) 'OPERATION'
+/*
+0=nothing, 1 = add, 2 = subtract, 3 = times, 4 = divide, 5 = equal, 6 = clear
+*/
+var butSymbols = ["1","2","3","+","4","5","6","-","7","8","9","×","Clear", "0" ,"=","÷" ];
+var butValues = [1,2,3,"+",4,5,6,"-", 7,8,9,"*","Clear", 0 ,"=","÷" ];/*keep symbols so it lines up with the other array*/
+var calcButtons = [];
+for (var i = 0; i <= 3; i++)
+{
+    for (var j = 0; j <= 3; j++)
+    {
+        var calculatorButtons = new Button
+        ({
+            x: 56+73 * i,
+            y: 108+72 * j,
+            width: 70,
+            height: 70,
+            butText: butSymbols[i+j*4],
+            color: color(122, 240, 230),
+            
+        });
+        calcButtons.push(new Button(calculatorButtons));
+    }
+}
+for (var i = 0; i<=10; i++)//turns number buttons a color, clear button seperate
+{ 
+    if (i!==3)
+    {
+        calcButtons[i].color = color(189, 17, 189);
+    }
+    else
+    {
+        calcButtons[i].color = color(79, 219, 28);
+    }
+}
+var arrayAdd = function(a)//will be used to add up chosen numbers, as the symbols arent numbers techniqually terrible spelling there whatever 
+{
+    var sumOfInputs = 0;
+    for (var i = 0; i < a.length; i++)
+    {
+        sumOfInputs = sumOfInputs + a[i];
+    }
+    return sumOfInputs;
+};
+var arrayCombineIntoNum = function(a)
+{
+    var finalNum = 0;
+    var tens = 10;
+    for (var i = a.length-1; i >= 0; i--)
+    {
+        if (i === a.length-1)
+        {
+            finalNum = a[i];
+        }
+        else 
+        {
+            finalNum = finalNum + a[i]*tens;
+            tens *= 10;
+        }
+    }
+    return finalNum;
+};// used to combine seperate integers inputed into one full number *not addition*
+mouseClicked = function()
+{
+    for (var i = 0; i < calcButtons.length; i++)
+    {
+        calcButtons[i].handleMouseClick();
+    }
+};
+var numInput = [];
+var valuesOfInput = [];
+var answer = null;
+var numButFunction = function(bIndex,bValue)
+{
+    answer = null;
+    if (z === 0) // if a operator has not been pressed
+    {
+        if (a === 0)
+        {
+            a = calcButtons[bIndex].butText;
+            numInput.push(bValue);
+        } 
+        else if (a !== 0)
+        {
+            a = a + calcButtons[bIndex].butText;
+            numInput.push(bValue);
+        }
+    }
+    else if (z > 0)
+    {
+        if (b === 0)
+        {
+            b = calcButtons[bIndex].butText;
+            numInput.push(bValue);
+        } 
+        else if (b !== 0)
+        {
+            b = b + calcButtons[bIndex].butText;
+            numInput.push(bValue);
+        }
+    }
+};
+calcButtons[0].onClick = function() // "1" button
+{
+    numButFunction(0,1);
+};
+calcButtons[1].onClick = function() // "4" button
+{
+    numButFunction(1,4);
+};
+calcButtons[2].onClick = function() // "7" button
+{
+    numButFunction(2,7);
+};
+calcButtons[3].onClick = function() // "Clear" button
+{
+    //add more later
+    numInput = [];
+    valuesOfInput = [];
+    answer = null;
+    a = 0;
+    b = 0;
+    z = 0;
+    
+};
+calcButtons[4].onClick = function() // "2" button
+{
+    numButFunction(4,2);
+};
+calcButtons[5].onClick = function() // "5" button
+{
+    numButFunction(5,5);
+};
+calcButtons[6].onClick = function() // "8" button
+{
+    numButFunction(6,8);
+};
+calcButtons[7].onClick = function() // "0" button
+{
+    numButFunction(7,0);
+};
+calcButtons[8].onClick = function() // "3" button
+{
+    numButFunction(8,3);
+};
+calcButtons[9].onClick = function() // "6" button
+{
+    numButFunction(9,6);
+};
+calcButtons[10].onClick = function() // "9" button
+{
+    numButFunction(10,9);
+};
+calcButtons[11].onClick = function() // "=" button
+{
+    if (z === 0)
+    {
+    }
+    else if (z === 1)
+    {
+        valuesOfInput.push(arrayCombineIntoNum(numInput));
+        a = 0;
+        b = 0;
+        z = 0;
+        numInput = [];
+        answer = arrayAdd(valuesOfInput);
+        valuesOfInput = [];
+    }
+};
+calcButtons[12].onClick = function() // "+" button
+{
+    //come back to this later
+    //put all input numbers into one number
+    if (z === 0)
+    {
+        valuesOfInput.push(arrayCombineIntoNum(numInput));
+        //println(valuesOfInput[0]);
+        numInput = [];
+        a = 0;
+        z = 1;
+        answer = null;
+    }
+    else if (z === 1)
+    {
+        valuesOfInput.push(arrayCombineIntoNum(numInput));
+        numInput = [];
+        b = 0;
+        a = 0;
+        answer = null;
+        
+    }
+};
+calcButtons[13].onClick = function() // "-" button
+{
+    //come back to this later
+};
+calcButtons[14].onClick = function() // "X" button
+{
+    //come back to this later
+};
+calcButtons[15].onClick = function() // "Divide" button
+{
+    //come back to this later
+};
+draw = function() 
+{
+    for (var i = 0; i < calcButtons.length; i++)
+    {
+        calcButtons[i].draw();
+    }
+    fill(161, 155, 155);
+    rect(60,10,260,76);
+    textSize(20);
+    fill(255, 255, 255);
+    textAlign(RIGHT,CENTER);
+    if (answer !== null)
+    {
+        text(answer, 314,47);
+    }
+    else if (a !== 0)
+    {
+        text(a, 314,47);
+    }
+    else if (b !== 0)
+    {
+        text(b, 314,47);
+    }
+};

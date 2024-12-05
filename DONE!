@@ -1,0 +1,885 @@
+//ADENS BITMOJI CODE
+var head= function(bitX,bitY,bitHeight){
+    noStroke(); 
+    fill(255,224,189); //skin color
+    ellipse(bitX,bitY-(bitHeight/100*125),(bitHeight/100*87),(bitHeight/100*105)); //head
+    fill(255, 255, 255);//white
+};
+var neck = function(bitX,bitY,bitHeight){
+    //bottom of neck
+    fill(230, 202, 172); //skin color
+    ellipse(bitX-(bitHeight/100*2),bitY-(bitHeight/100*44),(bitHeight/100*78),(bitHeight/100*71));//behind bottom of neck
+    
+    //neck
+    stroke(230, 202, 172);
+    strokeWeight(4);
+    line(bitX-(bitHeight/100*30),bitY-(bitHeight/100*51),bitX-(bitHeight/100*30),bitY-(bitHeight/100*92));//left side of neck
+    line(bitX+(bitHeight/100*27),bitY-(bitHeight/100*51),bitX+(bitHeight/100*30),bitY-(bitHeight/100*92));//right side of neck
+    stroke(0, 0, 0);//sets stroke to black for the neck definition
+    strokeWeight(0.5);
+    fill(230,202,172);
+    arc(bitX-(bitHeight/100*28),bitY-(bitHeight/100*49),(bitHeight/100*37),(bitHeight/100*60),269,360);//left side definition
+    arc(bitX+(bitHeight/100*26),bitY-(bitHeight/100*49),(bitHeight/100*37),(bitHeight/100*60),180,276);//right side definition
+    noStroke();
+    fill(207, 182, 155);
+    rect(bitX-(bitHeight/100*9),bitY-(bitHeight/100*59),(bitHeight/100*16),(bitHeight/100*10));//fills in bottom part between right and left side definitions
+    quad(bitX-(bitHeight/100*9),bitY-(bitHeight/100*55),bitX-(bitHeight/100*14),bitY-(bitHeight/100*69),bitX+(bitHeight/100*11),bitY-(bitHeight/100*71),bitX+(bitHeight/100*8),bitY-(bitHeight/100*57));//fills adams apple area
+    
+    //bottom of neck
+    fill(230, 202, 172); //skin color
+    ellipse(bitX-(bitHeight/100*2),bitY-(bitHeight/100*28),(bitHeight/100*73),(bitHeight/100*49));// bottom of neck for blending
+    };
+var chin = function(bitX,bitY,bitHeight){
+    strokeWeight(1);
+    //chin
+    noStroke();
+    fill(255,224,189);
+    
+    arc(bitX-(bitHeight/100*8),bitY-(bitHeight/100*98),(bitHeight/100*89),(bitHeight/100*67),-5,61);//right chin arc
+    arc(bitX-(bitHeight/100*7),bitY-(bitHeight/100*98),(bitHeight/100*59),(bitHeight/100*60),101,180);//left chin arc
+    stroke(255, 224, 189);// skincolor
+    line(bitX-(bitHeight/100*11),bitY-(bitHeight/100*69),bitX+(bitHeight/100*20),bitY-(bitHeight/100*72));//chin line to connect chin halfs
+    rect(bitX-(bitHeight/100*12),bitY-(bitHeight/100*96),(bitHeight/100*25),(bitHeight/100*26));//to fill in face
+    stroke(0, 0, 0);
+    line(bitX-(bitHeight/100*9),bitY-(bitHeight/100*81),bitX,bitY-(bitHeight/100*78));//leftchinline
+    line(bitX+(bitHeight/100*7),bitY-(bitHeight/100*81),bitX,bitY-(bitHeight/100*78));
+};
+var ears = function(bitX,bitY,bitHeight){
+    //left ear
+    noStroke();
+    fill(255,224,189);
+    ellipse(bitX-(bitHeight/100*43),bitY-(bitHeight/100*119),(bitHeight/100*17),(bitHeight/100*32)); //ear
+    stroke(0,0,0);
+    arc(bitX-(bitHeight/100*41),bitY-(bitHeight/100*119),(bitHeight/100*11),(bitHeight/100*14),77,296); //left inner ear
+    
+    //right ear
+    noStroke();
+    fill(255,224,189);
+    ellipse(bitX+(bitHeight/100*43),bitY-(bitHeight/100*119),(bitHeight/100*17),(bitHeight/100*32));//ear
+    stroke(0,0,0);
+    arc(bitX+(bitHeight/100*43),bitY-(bitHeight/100*119),(bitHeight/100*11),(bitHeight/100*14),257,462);//right inner ear
+};
+var face = function(bitX,bitY,bitHeight){
+    //eyes
+    stroke(0, 0, 0);
+    fill(255, 255, 255); //right eye white
+    ellipse(bitX+(bitHeight/100*15),bitY-(bitHeight/100*136),(bitHeight/100*19),(bitHeight/100*11));// right eye
+    fill (130, 192, 237); //eye color
+    ellipse(bitX+(bitHeight/100*15),bitY-(bitHeight/100*136),(bitHeight/100*8),(bitHeight/100*9)); //eye color part of eye
+    fill(0, 0, 0); //black pupil 
+    ellipse(bitX+(bitHeight/100*15),bitY-(bitHeight/100*136),(bitHeight/100*2),(bitHeight/100*2)); //pupil
+    
+    
+    noFill(); 
+    fill(255, 255, 255); //left eye white
+    ellipse(bitX-(bitHeight/100*16),bitY-(bitHeight/100*136),(bitHeight/100*19),(bitHeight/100*11)); // left eye
+    fill (130, 192, 237); //eye color
+    ellipse(bitX-(bitHeight/100*16),bitY-(bitHeight/100*136),(bitHeight/100*8),(bitHeight/100*9)); //eye color part of eye
+    fill(0, 0, 0); //black pupil 
+    ellipse(bitX-(bitHeight/100*16),bitY-(bitHeight/100*136),(bitHeight/100*2),(bitHeight/100*2)); //pupil
+    
+    
+    
+    //eyebrow left
+    noFill();
+    strokeWeight(4);
+    stroke(125, 93, 73);
+    arc(bitX-(bitHeight/100*17),bitY-(bitHeight/100*142),(bitHeight/100*19),(bitHeight/100*14),190,310);//left eyebrow
+    
+    //eyebrow right
+    
+    arc(bitX+(bitHeight/100*17),bitY-(bitHeight/100*142),(bitHeight/100*19),(bitHeight/100*14),223,343); //right eyebrow
+    
+    //nose
+    noFill();
+    strokeWeight(1);
+    arc(bitX+(bitHeight/100*11),bitY-(bitHeight/100*131),(bitHeight/100*16),(bitHeight/100*42),90,180);//right side of nose
+    arc(bitX-(bitHeight/100*11),bitY-(bitHeight/100*131),(bitHeight/100*16),(bitHeight/100*42),0,90);//left side of nose
+    arc(bitX,bitY-(bitHeight/100*90),(bitHeight/100*67),(bitHeight/100*41),253,291); //bottom of nose
+    //nostrils
+    fill(0, 0, 0);
+    arc(bitX-(bitHeight/100*4),bitY-(bitHeight/100*109),(bitHeight/100*4),(bitHeight/100*9),196,350);//right nostril
+    arc(bitX+(bitHeight/100*4),bitY-(bitHeight/100*109),(bitHeight/100*4),(bitHeight/100*9),196,350);//left nostril
+    noFill();
+    
+    //mouth
+    fill(235, 181, 184);
+    arc(bitX-(bitHeight/100*3),bitY-(bitHeight/100*98),(bitHeight/100*23), (bitHeight/100*6), 180,260);//upper left first curve
+    arc(bitX-(bitHeight/100*5),bitY-(bitHeight/100*99),(bitHeight/100*10),(bitHeight/100*4),270,360);//upper left second curve
+    arc(bitX+(bitHeight/100*3),bitY-(bitHeight/100*98),(bitHeight/100*16),(bitHeight/100*6),221,360);//upper right lip
+    
+    arc(bitX-(bitHeight/100*6), bitY-(bitHeight/100*99),(bitHeight/100*17),(bitHeight/100*8),45,180);//bottom left lip
+    arc(bitX+(bitHeight/100*3), bitY-(bitHeight/100*99),(bitHeight/100*17),(bitHeight/100*8),0,135);//bottom right lip
+    stroke(176, 135, 138);
+    strokeWeight(0.8);
+    line(bitX-(bitHeight/100*11),bitY-(bitHeight/100*98),bitX+(bitHeight/100*7),bitY-(bitHeight/100*98));//mouth line
+}; //facial features
+var hair = function(bitX,bitY,bitHeight){
+    //hair
+    noStroke();
+    fill(144,84,47);
+    triangle(bitX-(bitHeight/100*38),bitY-(bitHeight/100*171),bitX-(bitHeight/100*38),bitY-(bitHeight/100*126),bitX-(bitHeight/100*22),bitY-(bitHeight/100*170));//left hair
+    triangle(bitX+(bitHeight/100*39),bitY-(bitHeight/100*171),bitX+(bitHeight/100*40),bitY-(bitHeight/100*126),bitX+(bitHeight/100*25),bitY-(bitHeight/100*170));//right hair
+};
+var hat = function(bitX,bitY,bitHeight){
+    noFill();
+    //RHODY HAT
+    stroke(181, 179, 179);
+    strokeWeight(6);
+    arc(bitX,bitY-(bitHeight/100*149),(bitHeight/100*207),(bitHeight/100*47),248, 294);//closest part of brim
+    arc(bitX-(bitHeight/100*30),bitY-(bitHeight/100*172),(bitHeight/100*20),(bitHeight/100*20),180,215);//left brim curve
+    line(bitX-(bitHeight/100*31),bitY-(bitHeight/100*194),bitX-(bitHeight/100*38),bitY-(bitHeight/100*179));//left side of brim
+    line(bitX+(bitHeight/100*30),bitY-(bitHeight/100*194),bitX+(bitHeight/100*42),bitY-(bitHeight/100*172));//right side of brim
+    arc(bitX,bitY-(bitHeight/100*175),(bitHeight/100*95),(bitHeight/100*50),234,305);//where the brim and the top meet
+    fill(181, 179, 179);
+    strokeWeight(0.5);
+    quad(bitX-(bitHeight/100*31),bitY-(bitHeight/100*196),bitX+(bitHeight/100*27),bitY-(bitHeight/100*198),bitX+(bitHeight/100*40),bitY-(bitHeight/100*173),bitX-(bitHeight/100*38),bitY-(bitHeight/100*171));//fill in brim
+    strokeWeight(3);
+    line(bitX-(bitHeight/100*31),bitY-(bitHeight/100*196),bitX-(bitHeight/100*26),bitY-(bitHeight/100*215));//top of hat structure left
+    line(bitX+(bitHeight/100*31),bitY-(bitHeight/100*196),bitX+(bitHeight/100*26),bitY-(bitHeight/100*214));//top of hat structure right
+    fill(133, 133, 133);
+    quad(bitX-(bitHeight/100*26),bitY-(bitHeight/100*218),bitX+(bitHeight/100*24),bitY-(bitHeight/100*218),bitX+(bitHeight/100*30),bitY-(bitHeight/100*196),bitX-(bitHeight/100*30),bitY-(bitHeight/100*196));//fill top of hat
+    noFill();
+    arc(bitX,bitY-(bitHeight/100*196),(bitHeight/100*95),(bitHeight/100*50),238,303);//top top of hat
+};
+var rhodySymbol = function(bitX,bitY,bitHeight){
+    //rhody symbol
+    fill(0, 0, 200);
+    textSize((bitHeight/100*38));
+    text("R", bitX-(bitHeight/100*1),bitY-(bitHeight/100*224));//rhody "R" on hat
+    textSize((bitHeight/100*28));
+    var f = createFont("monospace");//sets the "I" to monospace font for the rhody symbol
+    textFont(f);
+    text("I", bitX-(bitHeight/100*2.0),bitY-(bitHeight/100*217));
+
+};
+var shirt = function(bitX,bitY,bitHeight){
+    
+    //shirt
+    strokeWeight(2);
+    stroke(59, 56, 56);
+    noFill();
+    arc(bitX-(bitHeight/100*1),bitY-(bitHeight/100*65),(bitHeight/100*75),(bitHeight/100*65),18,167);//neck line
+    fill(59,56,56);
+    rect(bitX-(bitHeight/100*34),bitY-(bitHeight/100*31),(bitHeight/100*64),(bitHeight/100*74));//body square
+    quad(bitX-(bitHeight/100*38),bitY-(bitHeight/100*57), bitX-(bitHeight/100*85),bitY-(bitHeight/100*12),bitX-(bitHeight/100*30),bitY-(bitHeight/100*10),bitX-(bitHeight/100*19),bitY-(bitHeight/100*26));//left shoulder
+    quad(bitX+(bitHeight/100*36),bitY-(bitHeight/100*53), bitX+(bitHeight/100*71),bitY-(bitHeight/100*11),bitX+(bitHeight/100*30),bitY-(bitHeight/100*11),bitX+(bitHeight/100*18),bitY-(bitHeight/100*30));//right shoulder
+    quad(bitX-(bitHeight/100*29),bitY-(bitHeight/100*36), bitX+(bitHeight/100*33),bitY-(bitHeight/100*15),bitX+(bitHeight/100*23),bitY-(bitHeight/100*38),bitX-(bitHeight/100*2),bitY-(bitHeight/100*30));//*fills in area under neckline *//
+};
+var arms = function (bitX,bitY,bitHeight){
+    //arms
+    fill(230, 202, 172);
+    noStroke();
+    rect(bitX-(bitHeight/100*76),bitY-(bitHeight/100*10),(bitHeight/100*30),(bitHeight/100*45));//Left arm
+    rect(bitX+(bitHeight/100*36),bitY-(bitHeight/100*10),(bitHeight/100*30),(bitHeight/100*45));//Right arm
+    //fingers
+    rect(bitX+(bitHeight/100*36),bitY+(bitHeight/100*5),(bitHeight/100*8),(bitHeight/100*40));//right arm finger #1 (from left to right)
+    rect(bitX+(bitHeight/100*46),bitY+(bitHeight/100*5),(bitHeight/100*8),(bitHeight/100*40));//right arm finger #2
+    rect(bitX+(bitHeight/100*56),bitY+(bitHeight/100*5),(bitHeight/100*8),(bitHeight/100*40));//right arm finger #3
+    
+    rect(bitX-(bitHeight/100*54),bitY+(bitHeight/100*5),(bitHeight/100*8),(bitHeight/100*40));//left arm finger #1 (from right to left)
+    rect(bitX-(bitHeight/100*64),bitY+(bitHeight/100*5),(bitHeight/100*8),(bitHeight/100*40));//left arm finger #2
+    rect(bitX-(bitHeight/100*74),bitY+(bitHeight/100*5),(bitHeight/100*8),(bitHeight/100*40));//left arm finger #3
+};
+var initials = function (bitX,bitY,bitHeight){
+    stroke(255, 0, 0);
+    strokeWeight(2);
+    fill(255, 255, 255);
+    textSize((bitHeight/100*23));
+    text("AP",bitX-(bitHeight/100*14),bitY-(bitHeight/100*17),(bitHeight/100*30),(bitHeight/100*24));//initials on shirt
+};
+var bitMoji= function(bitX,bitY,bitHeight){
+    head (bitX,bitY,bitHeight);
+    neck(bitX,bitY,bitHeight);
+    chin(bitX,bitY,bitHeight);
+    ears(bitX,bitY,bitHeight);
+    face(bitX,bitY,bitHeight);
+    hair(bitX,bitY,bitHeight);
+    hat(bitX,bitY,bitHeight);
+    rhodySymbol(bitX,bitY,bitHeight);
+    shirt(bitX,bitY,bitHeight);
+    arms(bitX,bitY,bitHeight);
+    initials(bitX,bitY,bitHeight);
+};//Adens Bitmoji
+//YANS BITMOJI CODE
+var drawHat = function (x, y, h){
+    fill(252, 252, 252);
+    rect(x+(h/100 *37),y+(h/100 *34),(h/100 *50),(h/100 *24)); //hat
+    line(x+(h/100 *74),y+(h/100 *58),x+(h/100 *4),y+(h/100 *58)); //tip of hat
+};
+var drawBody = function (a, b, h){
+    fill(0, 221, 255);
+    rect(a+(h/100 *39),b+(h/100 *115),(h/100 *50),(h/100 *50)); //body
+    rect(a+(h/100 *17),b+(h/100 *115),(h/100 *20),(h/100 *60)); //left arm
+    rect(a+(h/100 *91),b+(h/100 *115),(h/100 *20),(h/100 *60)); //right arm
+    textSize((h/100 *21));
+    fill(0, 255, 13);
+    text("YP",a+(h/94 *50),b+(h/116 *146)); //Initials on shirt
+};
+var drawHead = function (c, d, h){
+    fill(252, 255, 199);
+    ellipse(c+(h/100 *35),d+(h/100 *88),(h/100 *10),(h/100 *10)); //left ear
+    ellipse(c+(h/100 *91),d+(h/100 *88),(h/100 *10),(h/100 *10)); //right ear
+    fill(252, 255, 199);
+    ellipse(c+(h/100 *63),d+(h/100 *86),(h/100 *55),(h/100 *58)); //head
+    fill(133, 53, 53);
+    ellipse(c+(h/100 *54),d+(h/100 *79),(h/100 *6),(h/100 *6)); //left eye
+    fill(133, 53, 53);
+    ellipse(c+(h/100 *73),d+(h/100 *79),(h/100 *6),(h/100 *6)); //right eye
+    fill(255, 255, 255);
+    ellipse(c+(h/100 *63),d+(h/100 *100),(h/100 *24),(h/100 *0)); //mouth
+    fill(212, 189, 189);
+    arc(c+(h/100 *66),d+(h/100 *91),(h/100 *7),(h/100 *6),57,286); //nose
+    fill(0, 0, 0);
+    arc(c+(h/100 *63),d+(h/100 *67),(h/100 *52),(h/100 *-24),-27,207); //hair
+};
+var drawBitmoji=function(bitmojiX, bitmojiY, h){
+    drawHead (bitmojiX, bitmojiY, h);
+    drawHat (bitmojiX, bitmojiY, h);
+    drawBody (bitmojiX, bitmojiY, h);
+};//Yans Bitmoji
+var Button = function(config) //button contructor
+{
+    this.x = config.x || 0;
+    this.y = config.y || 0;
+    this.width = config.width || 50;
+    this.height = config.height || 50;
+    this.butText = config.butText;
+    this.color = config.color || color(255, 255, 255);
+    this.onClick = config.onClick || function() {};
+};
+Button.prototype.draw = function() //button draw function
+{
+    rectMode(LEFT);
+    fill(this.color);
+    rect(this.x, this.y, this.width, this.height, 5);
+    fill(0, 0, 0);
+    textSize(26);
+    textAlign(CENTER, TOP);
+    text(this.butText, this.x+44, this.y+(this.height/2)-12);
+};
+Button.prototype.isMouseInside = function() //determines if the mouse is over a button
+{
+    return mouseX > this.x &&
+           mouseX < (this.x + this.width) &&
+           mouseY > this.y &&
+           mouseY < (this.y + this.height);
+};
+Button.prototype.handleMouseClick = function() 
+/* checks isMouseInside if yes, runs the onClick function */
+{
+    if (this.isMouseInside()) 
+    {
+        this.onClick();
+    }
+};
+var sceneNum = 1;//scene number
+var a = 0;// numbers shown on the screen
+var b = 0;// num 2 in calculation
+var z = 0; // defines what happens to the num (+,-,/,*) 'OPERATION'
+/*
+0=nothing, 1 = add, 2 = subtract, 3 = times, 4 = divide, 5 = equal, 6 = clear
+*/
+var butSymbols = ["1","2","3","+","4","5","6","-","7","8","9","×","Clear", "0" ,"=","÷" ];
+var butValues = [1,2,3,"+",4,5,6,"-",7,8,9,"*","Clear",0,"=","÷"];/*keep symbols so it lines up with the other array*/
+var calcButtons = [];//where the buttons are stored and called from
+var numInput = [];//individual digits pushed by clicking numbers
+var valuesOfInput = [];//the full numbers which will be used in equation
+var answer = null;
+var pastAnswer = 0;//allows memory of the previous answer
+var keepAShown = false;
+var keepPastAnswerShown = false;
+var defOpColors = {r:129,g:206, b:227}; //default op colors
+var wasOpPressed = false;//if true, triggers change in color of op.
+var btnStart = new Button
+({
+    x: 154,
+    y: 201,
+    width: 100,
+    height: 40,
+    color: color(149, 122, 230),
+    butText: "Start",
+    onClick: function()
+    {
+        sceneNum = 2;
+    }
+});//creates the "start" button
+var startScene = function(x,y)
+{
+    background(38, 209, 212);
+    for (var i = 0; i<4; i++)
+    {
+        var syms = ["+","-","×","÷"];
+        textSize(96);
+        fill(222, 24, 24);
+        text(syms[i],x+13+(i*112),y+17);
+    }
+    fill(136, 112, 138);
+    rect(x+144,y+167,94,27);
+    fill(255, 255, 255);
+    rect(x+144,y+196,94,102);
+    fill(181, 155, 155);
+    rect(x+148,y+201,18,18);
+    rect(x+170,y+225,18,18);
+    rect(x+193,y+225,18,18);
+    rect(x+216,y+225,18,18);
+    rect(x+148,y+225,18,18);
+    rect(x+170,y+201,18,18);
+    rect(x+193,y+250,18,18);
+    rect(x+216,y+250,18,18);
+    rect(x+148,y+250,18,18);
+    rect(x+170,y+250,18,18);
+    rect(x+193,y+201,18,18);
+    rect(x+216,y+274,18,18);
+    rect(x+148,y+274,18,18);
+    rect(x+170,y+275,18,18);
+    rect(x+193,y+275,18,18);
+    rect(x+216,y+202,18,18);
+    textSize(15);
+    fill(255, 0, 0);
+    text("+",x+224,y+202);
+    text("-",x+224,y+225);
+    text("x",x+224,y+251);
+    text("÷",x+224,y+275);
+    text("1",x+156,y+201);
+    text("2",x+178,y+201);
+    text("3",x+201,y+201);
+    text("4",x+156,y+225);
+    text("5",x+178,y+225);
+    text("6",x+201,y+225);
+    text("7",x+156,y+251);
+    text("8",x+178,y+250);
+    text("9",x+201,y+251);
+    text("0",x+178,y+276);
+    text("C",x+156,y+276);
+    text("=",x+201,y+275);
+    fill(0, 0, 0);
+    textSize(26);
+    text("Aden Pessin & Yan Pan's", x+168,y+-45);
+    text("Calculator App", x+172,y+7);
+    btnStart.draw();
+    drawBitmoji(x+271,y+143,79);
+    bitMoji(x+33,y+273,57);
+
+};//what shows in scene 1
+
+for (var i = 0; i <= 3; i++) //creates calc buttons, pushes them into array
+{
+    for (var j = 0; j <= 3; j++)
+    {
+        var calculatorButtons = new Button
+        ({
+            x: 33 + 86 * i,
+            y: 97 + 74 * j,
+            width: 86,
+            height: 73,
+            butText: butSymbols[i+j*4],
+            color:color(defOpColors.r,defOpColors.g,defOpColors.b),
+        });
+        calcButtons.push(new Button(calculatorButtons));
+    }
+}
+for (var i = 0; i <= 10; i++)//turns number buttons a color, clear button seperate
+{ 
+    if (i !== 3)//if not clear button, give gray
+    {
+        calcButtons[i].color = color(145, 136, 140);
+    }
+    else//if clear button give orange
+    {
+        calcButtons[i].color = color(212, 151, 45);
+    }
+}
+var arrayAdd = function(a)//will be used to add up chosen numbers in an array
+{
+    var sumOfInputs = 0;
+    for (var i = 0; i < a.length; i++)
+    {
+        sumOfInputs = sumOfInputs + a[i];
+    }
+    return sumOfInputs;
+};
+var arraySub = function(a) //subtraction function
+{
+    var difOfInputs = 0;
+    for (var i = 0; i < a.length; i++)
+    {
+        if (i === 0)
+        {
+            difOfInputs = a[i]-difOfInputs;
+        }
+        else
+        {
+            difOfInputs -= a[i];
+        }
+    }
+    return difOfInputs;
+};
+var arrayMult = function(a)//multiply function
+{
+    var product = 0;
+    for (var i = 0; i < a.length; i++)
+    {
+        if (i === 0)
+        {
+            product = a[i];
+        }
+        else 
+        {
+            product *= a[i];
+        }
+    }
+    return product;
+};
+var arrayDiv = function(a)// dividing function
+{
+    var quotient = 0;
+    for (var i = 0; i < a.length; i++)
+    {
+        if (i === 0)
+        {
+            quotient = a[i];
+        }
+        else 
+        {
+            quotient /= a[i];
+        }
+    }
+    return quotient;
+};
+var arrayCombineIntoNum = function(a)//each button pushs individual digits into array. they are the put into 1 number using this function EX: [4,5,3,5] --> 4,535
+{
+    var finalNum = 0;
+    var tens = 10;
+    for (var i = a.length-1; i >= 0; i--)//starts at the end of array given
+    {
+        if (i === a.length-1)// if its the last num in the array, it gets the ones place
+        {
+            finalNum = a[i];
+        }
+        else 
+        /*the digits before the last one are multiplied by ten, or a squared 10 to be put
+        into the coorisponding numbers place, as our numbers are a base of ten */
+        {
+            finalNum = finalNum + a[i]*tens;
+            tens *= 10;
+        }
+    }
+    return finalNum;
+};
+mouseClicked = function()//mouseclicked function
+{
+    if (sceneNum === 1)
+    {
+        btnStart.handleMouseClick();
+    }
+    else if (sceneNum === 2)//if scene 2 register mouseclick
+    {
+        for (var i = 0; i < calcButtons.length; i++)
+        {
+            calcButtons[i].handleMouseClick();
+        }
+    }
+};
+var numButFunction = function(bIndex,bValue)//Number Buttn function
+{
+    wasOpPressed = false;//resets the darkop buttons
+    keepAShown = false;//takes away so it can display whats typed
+    keepPastAnswerShown = false;//same as y keepAshown gets false
+    answer = null;
+    if (z === 0 && pastAnswer !== 0)
+    {
+        pastAnswer = 0;
+    }/*if no operator is active, but there is a pastAnswer, reset pastAnswer to 0, because these are the number buttons, past answer only matters when an op is pressed right after "=" is pressed */
+    
+    if (z === 0 && pastAnswer === 0) 
+    {
+        if (a === 0)
+        {
+            a = calcButtons[bIndex].butText;
+            numInput.push(bValue);
+        } 
+        else if (a !== 0)
+        {
+            a = a + calcButtons[bIndex].butText;
+            numInput.push(bValue);
+        }
+    }/*if an operator has not been pressed, and theres no
+    pastAnswer, meaning its the first time running, or clear was
+    pressed, 2 things can then happen. if variable a hasnt been set
+    to anything, a will become the text displayed, while also
+    pushing the numerical value of whatever text it is, into
+    another array to be used later. if a isnt 0, a adds on the
+    symbol of the next # button pressed, and pushing a new
+    numerical value into array. the combine into number function 
+    takes that seperate array to get the full number*/
+    else if (z === 0 && pastAnswer !== 0)
+    {
+        a = pastAnswer;
+        if (b === 0)
+        {
+            b = calcButtons[bIndex].butText;
+            numInput.push(bValue);
+        } 
+        else if (b !== 0)
+        {
+            b = b + calcButtons[bIndex].butText;
+            numInput.push(bValue);
+        }
+    } /* same conditional as the first in this function, but after
+    a has been declared by the user, the next set of numbers in a
+    mathematical function are going to be the variable b. */
+    else if (z > 0)
+    {
+        if (b === 0)
+        {
+            b = calcButtons[bIndex].butText;
+            numInput.push(bValue);
+        } 
+        else if (b !== 0)
+        {
+            b = b + calcButtons[bIndex].butText;
+            numInput.push(bValue);
+        }
+    }/* if z isnt 0, meaning an operator is active, the number pressed will go to b, as variable a is already filled*/
+};
+calcButtons[0].onClick = function() // "1" button
+{
+    numButFunction(0,1);
+};
+calcButtons[1].onClick = function() // "4" button
+{
+    numButFunction(1,4);
+};
+calcButtons[2].onClick = function() // "7" button
+{
+    numButFunction(2,7);
+};
+calcButtons[3].onClick = function() // "Clear" button
+{
+    numInput = [];//resets
+    valuesOfInput = [];//resets
+    pastAnswer = 0;//resets
+    answer = null;//resets
+    a = 0;//resets
+    b = 0;//resets
+    z = 0;//resets
+    keepPastAnswerShown = false;//resets
+    keepAShown = false;//resets
+    wasOpPressed = false;//resets
+};
+calcButtons[4].onClick = function() // "2" button
+{
+    numButFunction(4,2);
+};
+calcButtons[5].onClick = function() // "5" button
+{
+    numButFunction(5,5);
+};
+calcButtons[6].onClick = function() // "8" button
+{
+    numButFunction(6,8);
+};
+calcButtons[7].onClick = function() // "0" button
+{
+    numButFunction(7,0);
+};
+calcButtons[8].onClick = function() // "3" button
+{
+    numButFunction(8,3);
+};
+calcButtons[9].onClick = function() // "6" button
+{
+    numButFunction(9,6);
+};
+calcButtons[10].onClick = function() // "9" button
+{
+    numButFunction(10,9);
+};
+calcButtons[11].onClick = function() // "=" button
+{
+    var runOp = function(opFunction)
+    {
+        valuesOfInput.push(arrayCombineIntoNum(numInput));
+        a = 0;
+        b = 0;
+        z = 0;
+        numInput = [];
+        answer = opFunction(valuesOfInput);
+        pastAnswer = answer;
+        valuesOfInput = [];
+    };
+    /* this function resets a,b,z, numInput[], valuesOfInput[],sets answer pastanswer, and also calls the correct op to use with the numbers*/
+    wasOpPressed = true;
+    if (z === 0)
+    {
+        //empty, nothing needs to happen
+    }
+    else if (z === 1)
+    {
+        runOp(arrayAdd);//adds values of inputs together
+    }
+    else if (z === 2)
+    {
+        runOp(arraySub);//subtracts values of inputs
+    }
+    else if (z === 3)
+    {
+        runOp(arrayMult);//multiplys values of inputs
+    }
+    else if (z === 4)
+    {
+        runOp(arrayDiv);//divides values of inputs
+    }
+};
+calcButtons[12].onClick = function() // "+" button
+{
+    wasOpPressed = true;//allows color change
+    if (z === 0 && pastAnswer !== 0)
+    {
+        valuesOfInput.push(pastAnswer);
+        numInput = [];
+        a = 0;
+        z = 1;
+        answer = null;
+        keepPastAnswerShown = true;
+    }/*after "=" pressed, theres a past answer, which is pushed to values
+    of input*/
+    else if (z === 0)
+    {
+        valuesOfInput.push(arrayCombineIntoNum(numInput));
+        numInput = [];
+        a = 0;
+        z = 1;
+        answer = null;
+        keepAShown = true;
+    }/* pushes numInput through combineIntoNum, pushing that into
+    values of input, sets z=1 to tell that their abt to add, keeps
+    a shown so user can see it */
+    else if (z === 1)
+    {
+        valuesOfInput.push(arrayCombineIntoNum(numInput));
+        numInput = [];
+        b = 0;
+        a = 0;
+        answer = null;
+    }
+};
+calcButtons[13].onClick = function() // "-" button
+{
+    wasOpPressed = true;
+    if (z === 0 && pastAnswer !== 0) //if equals was pressed, then "-" is pressed, it uses the past answer
+    {
+        valuesOfInput.push(pastAnswer);
+        numInput = [];
+        a = 0;
+        z = 2;
+        answer = null;
+        keepPastAnswerShown = true;
+    }
+    else if (z === 0)//combines the numbers inputed and puts it in valuesOfInput
+    {
+        valuesOfInput.push(arrayCombineIntoNum(numInput));
+        numInput = [];
+        a = 0;
+        z = 2;
+        answer = null;
+        keepAShown = true;
+    }
+    else if (z === 2)
+    {//allows continuous input of numbers if its ONLY that operator active
+        valuesOfInput.push(arrayCombineIntoNum(numInput));
+        numInput = [];
+        b = 0;
+        a = 0;
+        answer = null;
+    }
+};
+calcButtons[14].onClick = function() // "X" button
+{
+    wasOpPressed = true;
+    if (z === 0 && pastAnswer !== 0)//if equals was pressed, then "x" is pressed, it uses the past answer
+    {
+        valuesOfInput.push(pastAnswer);
+        numInput = [];
+        a = 0;
+        z = 3;
+        answer = null;
+        keepPastAnswerShown = true;
+    }
+    else if (z === 0)//if theres no past answer, set z to 3 and send all the numbers inputed
+    {
+        valuesOfInput.push(arrayCombineIntoNum(numInput));
+        numInput = [];
+        a = 0;
+        z = 3;
+        answer = null;
+        keepAShown = true;
+    }
+    else if (z === 3)
+    {
+        valuesOfInput.push(arrayCombineIntoNum(numInput));
+        numInput = [];
+        b = 0;
+        a = 0;
+        answer = null;
+    }
+};
+calcButtons[15].onClick = function() // "Divide" button
+{
+    wasOpPressed = true;
+    if (z === 0 && pastAnswer !== 0)
+    {
+        valuesOfInput.push(pastAnswer);
+        numInput = [];
+        a = 0;
+        z = 4;
+        answer = null;
+        keepPastAnswerShown = true;
+    }
+    else if (z === 0)
+    {
+        valuesOfInput.push(arrayCombineIntoNum(numInput));
+        numInput = [];
+        a = 0;
+        z = 4;
+        answer = null;
+        keepAShown = true;
+    }
+    else if (z === 4)
+    {
+        valuesOfInput.push(arrayCombineIntoNum(numInput));
+        numInput = [];
+        b = 0;
+        a = 0;
+        answer = null;
+    }
+};
+var calcNumDisplay = function(x,y)
+{
+    var displayWhat;
+    var sNotation = function (num)
+    {
+        if (num <= 10000000)
+        {
+            return num;
+        }
+        else if (num > 10000000)
+        {
+            return num.toExponential();
+        }
+    }; //numbers larger than 10 mil turned to scientific notation
+    
+    if (answer !== null)//if answer is something, show it
+    {
+        displayWhat = sNotation(answer);
+    }
+    if ( a !== 0 )//sets displayWhat to a to display a
+    {
+        displayWhat = a;
+    }
+    else if (b !== 0)
+    {
+        displayWhat = b;//sets displayWhat to b to display b
+    }
+    //Below determines what is true
+    if (keepAShown === true)
+    {
+        text(valuesOfInput, x , y);//show valuesOfInput if true
+    }
+    else if (keepPastAnswerShown === true)//turned on from = button
+    {
+        text(pastAnswer, x , y);
+    }
+    else
+    {
+        text(displayWhat, x , y);//defined right above
+    }
+    
+};
+
+var changeOpColor = function ()//changes the color of the op buttons so user can remeber which they chose
+{
+    var whichOpPressed = function(index)
+    {
+        calcButtons[index].color = color
+        (
+            defOpColors.r-50,
+            defOpColors.g-50,
+            defOpColors.b-50
+        ); //darkens color
+        calcButtons[11].color = color
+        (
+            defOpColors.r,
+            defOpColors.g,
+            defOpColors.b
+        );//makes sure "=" goes back to normal
+    };//darkens colors, resets "=" color
+    if (wasOpPressed === true)
+    {
+        if (z === 0)// "=" pressed
+        {
+            calcButtons[11].color = color
+            (
+                defOpColors.r-50,
+                defOpColors.g-50,
+                defOpColors.b-50
+            );
+        }
+        else if (z === 1)//addition button darkened
+        {
+            whichOpPressed(12);
+        }
+        else if (z === 2)//subtraction button darkened
+        {
+            whichOpPressed(13);
+        }
+        else if (z === 3)//multiplication button darkened
+        {
+            whichOpPressed(14);
+        }
+        else if (z === 4)//division button darkened
+        {
+            whichOpPressed(15);
+        }
+    }
+    else //changes it back 
+    {
+        for (var i = 11; i <= 15; i++)
+        {
+            calcButtons[i].color = color
+            (
+                defOpColors.r,
+                defOpColors.g,
+                defOpColors.b
+            );
+        }
+    }
+};
+draw = function() 
+{
+    if (sceneNum === 1)
+    {
+        startScene(16,88);
+    }
+    else if (sceneNum === 2)
+    {
+        stroke(0, 0, 0);
+        strokeWeight(5);//adds lines around everything
+        fill(120, 4, 4);//red background color
+        rect(2, 2, 395,395);//black border around calc
+        for (var i = 0; i < calcButtons.length; i++)//draws buttons
+        {
+            calcButtons[i].draw();
+        }
+        fill(79, 75, 75);// dark grey color for answer box
+        rect(46,10,318,76);//answer box
+        textSize(20);
+        fill(255, 255, 255);//white text color
+        textAlign(RIGHT,CENTER);//makes text appear like a calc
+        calcNumDisplay(354,47);//displays what needs to be shown(x,y)
+        changeOpColor();//function for changing the op color 
+        drawBitmoji(350,54,43);//yans bitmoji on calculator
+        bitMoji(27,121,26);//adens bitmoji on calculator
+    }
+};
